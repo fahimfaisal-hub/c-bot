@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>C-Bot — Default Widget Demo</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #14171F; }
+    h1 { font-size: 22px; }
+    p { color: #6B7280; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Our Company Website</h1>
+  <p>
+    This page demonstrates the default chat widget — click the round
+    button in the bottom-right corner to open the chat side panel.
+  </p>
+
+  <!-- data-api-key: use the PUBLIC CHAT KEY from the admin panel's
+       Integration page (or GET /v1/admin/chat-key), NOT your admin
+       API_SECRET_KEY. This key is meant to be visible in page source. -->
+  <script src="widget.js"
+    data-api-url="http://localhost:8000"
+    data-api-key="your-public-chat-key-here"
+    data-bot-name="Company Assistant"
+    data-accent-color="#3454D1"
+    data-greeting="Hi there 👋 Ask me anything about our products, pricing, or policies."
+    data-position="right">
+  </script>
+</body>
+</html>

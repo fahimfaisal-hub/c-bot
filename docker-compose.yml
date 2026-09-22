@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  api_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: c-bot-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      # Mount source code directly so Python file changes (routes, RAG
+      # logic, admin endpoints, etc.) take effect on a simple restart —
+      # no image rebuild needed unless requirements.txt changes.
+      - ./core_engine:/app/core_engine
+      - ./api_server:/app/api_server
+    command: uvicorn api_server.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  admin_ui:
+    build:
+      context: ./admin_ui
+      dockerfile: Dockerfile
+    container_name: c-bot-admin-ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api_server
+    restart: unless-stopped

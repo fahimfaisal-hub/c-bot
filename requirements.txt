@@ -1,0 +1,14 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-dotenv==1.0.1
+pydantic==2.9.2
+chromadb==0.5.5
+pypdf==4.3.1
+python-docx==1.1.2
+beautifulsoup4==4.12.3
+requests==2.32.3
+openai==1.51.0
+httpx==0.27.2  # pinned: newer httpx drops 'proxies' kwarg that openai==1.51.0 still passes internally
+google-generativeai==0.8.2
+sentence-transformers==3.1.1  # free, local embeddings — no API key needed
+python-multipart==0.0.9  # required by FastAPI for file uploads (/v1/ingest/file)
